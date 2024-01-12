@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- General -->
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!-- Package meta -->
+	<PropertyGroup>
+		<Description>The Rhythm Drop package for Umbraco non-web related dependencies.</Description>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<!-- Readme includes -->
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<!-- Package includes -->
+	<ItemGroup>
+		<PackageReference Include="Rhythm.Drop.Infrastructure" Version="1.0.1" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="13.0.3" />
+	</ItemGroup>
+
+	<!-- SourceLink includes -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+	</ItemGroup>
+
+</Project>
