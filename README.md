@@ -1,4 +1,4 @@
-# rhythm.drop.umbraco
+# rhythm.drop.umbraco [![Publish to NuGet](https://github.com/rhythmagency/rhythm.drop.umbraco/actions/workflows/Publish-to-NuGet.yml/badge.svg)](https://github.com/rhythmagency/rhythm.drop.umbraco/actions/workflows/Publish-to-NuGet.yml) [![NuGet](https://img.shields.io/nuget/v/Rhythm.Drop.Umbraco?logo=nuget)](https://www.nuget.org/packages/Rhythm.Drop.Umbraco)
 
 Rhythm.Drop functionality for Umbraco CMS.
 
