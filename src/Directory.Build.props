@@ -15,8 +15,8 @@
 		<Copyright>Copyright © Rhythm 2024</Copyright>
 		<PackageTags>umbraco aspnetcore taghelpers razor cshtml images links components</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/rhythmagency/rhythm.drop</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/rhythmagency/rhythm.drop</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/rhythmagency/rhythm.drop.umbraco</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/rhythmagency/rhythm.drop.umbraco</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
