@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// An implementation of <see cref="IModalPersistenceHelper"/> which uses Umbraco's <see cref="AppCaches.RequestCache"/>.
 /// </summary>
 /// <param name="appCaches">The app caches.</param>
-internal sealed class UmbracoModalPersistenceHelper(AppCaches appCaches) : IModalPersistenceHelper
+internal sealed class UmbracoModalPersistenceHelper(AppCaches appCaches)  : IModalPersistenceHelper 
 {
     private const string CacheKeyPrefix = "RhythmDrop__Modal__";
 

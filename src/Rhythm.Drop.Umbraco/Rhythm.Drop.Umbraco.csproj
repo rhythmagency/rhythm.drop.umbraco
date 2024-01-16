@@ -20,13 +20,13 @@
 
 	<!-- Project includes -->
 	<ItemGroup>
-		<ProjectReference Include="..\Rhythm.Drop.Umbraco.Infrastructure\Rhythm.Drop.Umbraco.Infrastructure.csproj" />
+		<ProjectReference Include="..\Rhythm.Drop.Umbraco.Builders\Rhythm.Drop.Umbraco.Builders.csproj" />
 		<ProjectReference Include="..\Rhythm.Drop.Umbraco.Web\Rhythm.Drop.Umbraco.Web.csproj" />
 	</ItemGroup>
 
 	<!-- Package includes -->
 	<ItemGroup>
-		<PackageReference Include="Rhythm.Drop" Version="1.0.1" />
+		<PackageReference Include="Rhythm.Drop" Version="2.0.0" />
 		<PackageReference Include="Umbraco.Cms.Core" Version="13.0.3" />
 	</ItemGroup>
 
