@@ -43,8 +43,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
-    - name: Pack Rhythm.Drop.Umbraco.Infrastructure
-      run: dotnet pack ./src/Rhythm.Drop.Umbraco.Infrastructure/Rhythm.Drop.Umbraco.Infrastructure.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
+    - name: Pack Rhythm.Drop.Umbraco.Builders
+      run: dotnet pack ./src/Rhythm.Drop.Umbraco.Builders/Rhythm.Drop.Umbraco.Builders.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
 
     - name: Pack Rhythm.Drop.Umbraco.Web
       run: dotnet pack ./src/Rhythm.Drop.Umbraco.Web/Rhythm.Drop.Umbraco.Web.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
