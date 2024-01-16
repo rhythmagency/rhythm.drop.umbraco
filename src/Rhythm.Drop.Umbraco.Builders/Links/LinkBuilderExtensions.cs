@@ -42,7 +42,7 @@ public static class LinkBuilderExtensions
     }
 
     /// <summary>
-    /// Adds a URL from a <see cref="IPublishedContent"/> to the builder.
+    /// Adds a Media URL from a <see cref="IPublishedContent"/> to the builder.
     /// </summary> 
     /// <param name="builder">The current link builder.</param>
     /// <param name="content">The content to use for the URL.</param>
