@@ -46,6 +46,9 @@ jobs:
     - name: Pack Rhythm.Drop.Umbraco.Builders
       run: dotnet pack ./src/Rhythm.Drop.Umbraco.Builders/Rhythm.Drop.Umbraco.Builders.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
 
+    - name: Pack Rhythm.Drop.Umbraco.Mapping
+      run: dotnet pack ./src/Rhythm.Drop.Umbraco.Mapping/Rhythm.Drop.Umbraco.Mapping.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
+
     - name: Pack Rhythm.Drop.Umbraco.Web
       run: dotnet pack ./src/Rhythm.Drop.Umbraco.Web/Rhythm.Drop.Umbraco.Web.csproj --no-restore -c $BUILD_CONFIG /p:version=$PACKAGE_VERSION
 
