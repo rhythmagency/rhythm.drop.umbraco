@@ -50,7 +50,7 @@ public static class UmbracoMapperComponentsExtensions
         var components = new List<TComponent>();
         foreach (var block in list)
         {
-            var component = mapper.Map<TComponent?>(block.Content);
+            var component = mapper.MapComponent<TComponent>(block.Content);
             if (component is null)
             {
                 continue;

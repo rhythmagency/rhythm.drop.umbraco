@@ -47,7 +47,7 @@ public static class MapperContextComponentsExtensions
         var components = new List<TComponent>();
         foreach (var block in list)
         {
-            var component = mapperContext.Map<TComponent?>(block.Content);
+            var component = mapperContext.MapComponent<TComponent>(block.Content);
             if (component is null)
             {
                 continue;
