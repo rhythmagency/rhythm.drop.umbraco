@@ -27,7 +27,7 @@ public static class UmbracoMapperLinkExtensions
             return default;
         }
 
-        return mapper.MapLink<TLink>(block.Content);
+        return mapper.MapLink<TLink>(block.Content, configureContext);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public static class UmbracoMapperLinkExtensions
     /// <returns>A <see cref="ILink"/> if successful.</returns>
     public static ILink? MapLink(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapLink<ILink>(block);
+        return mapper.MapLink<ILink>(block, configureContext);
     }
 
     /// <summary>
