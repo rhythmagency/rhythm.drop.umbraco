@@ -73,8 +73,13 @@ public static class MapperContextLinkExtensions
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
     /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
-    public static TLink? MapLink<TLink>(this MapperContext mapperContext, BlockListModel list) where TLink : class, ILink
+    public static TLink? MapLink<TLink>(this MapperContext mapperContext, BlockListModel? list) where TLink : class, ILink
     {
+        if (list is null)
+        {
+            return default;
+        }
+
         return mapperContext.MapLink<TLink>(list.FirstOrDefault());
     }
 
@@ -84,7 +89,7 @@ public static class MapperContextLinkExtensions
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
     /// <returns>A <see cref="ILink"/> if successful.</returns>
-    public static ILink? MapLink(this MapperContext mapperContext, BlockListModel list)
+    public static ILink? MapLink(this MapperContext mapperContext, BlockListModel? list)
     {
         return mapperContext.MapLink<ILink>(list);
     }

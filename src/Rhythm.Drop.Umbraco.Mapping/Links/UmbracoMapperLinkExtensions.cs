@@ -80,8 +80,13 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
-    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
+    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
+        if (list is null)
+        {
+            return default;
+        }
+
         return mapper.MapLink<TLink>(list.FirstOrDefault(), configureContext);
     }
 
@@ -92,7 +97,7 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <see cref="ILink"/> if successful.</returns>
-    public static ILink? MapLink(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
+    public static ILink? MapLink(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLink<ILink>(list, configureContext);
     }
