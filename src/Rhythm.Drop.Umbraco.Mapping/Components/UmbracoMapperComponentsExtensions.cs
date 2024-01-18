@@ -10,21 +10,49 @@ using Rhythm.Drop.Models.Components;
 /// </summary>
 public static class UmbracoMapperComponentsExtensions
 {
+    private static readonly Action<MapperContext> _defaultContextFunc = (c) => { };
+
     /// <summary>
     /// Maps a <see cref="IPublishedContent"/> to a collection of <typeparamref name="TComponent"/>.
     /// </summary>
     /// <typeparam name="TComponent">The type of the component.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="content">The content to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
+    /// <returns>An array of <see cref="IComponent"/>.</returns>
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent content, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
+    {
+        var component = mapper.Map<TComponent[]>(content, configureContext ?? _defaultContextFunc);
+
+        return component ?? [];
+    }
+
+    /// <summary>
+    /// Maps a <see cref="IPublishedContent"/> to a collection of <see cref="IComponent"/>.
+    /// </summary>
+    /// <param name="mapper">The current umbraco mapper.</param>
+    /// <param name="content">The content to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
+    /// <returns>An array of <see cref="IComponent"/>.</returns>
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, IPublishedContent content, Action<MapperContext>? configureContext = default)
+    {
+        return mapper.MapComponents<IComponent>(content, configureContext);
+    }
+
+    /// <summary>
+    /// Maps a <see cref="IPublishedContent"/> to a collection of <see cref="IComponent"/>.
+    /// </summary>
+    /// <param name="mapper">The current umbraco mapper.</param>
+    /// <param name="content">The content to map.</param>
     /// <returns>An array of <see cref="IComponent"/>.</returns>
     public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent content) where TComponent : class, IComponent
     {
-        var component = mapper.Map<TComponent[]>(content, (context) =>
+        void configureContext(MapperContext context)
         {
             context.Items["CurrentPage"] = content;
-        });
+        }
 
-        return component ?? [];
+        return mapper.MapComponents<TComponent>(content, configureContext);
     }
 
     /// <summary>
@@ -44,13 +72,14 @@ public static class UmbracoMapperComponentsExtensions
     /// <typeparam name="TComponent">The type of the component.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockListModel list) where TComponent : class, IComponent
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
         var components = new List<TComponent>();
         foreach (var block in list)
         {
-            var component = mapper.MapComponent<TComponent>(block.Content);
+            var component = mapper.MapComponent<TComponent>(block.Content, configureContext);
             if (component is null)
             {
                 continue;
@@ -67,10 +96,11 @@ public static class UmbracoMapperComponentsExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockListModel list)
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapComponents<IComponent>(list);
+        return mapper.MapComponents<IComponent>(list, configureContext);
     }
 
     /// <summary>
@@ -78,10 +108,11 @@ public static class UmbracoMapperComponentsExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockGridModel? grid) where TComponent : class, IComponent
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
-        var gridComponent = mapper.MapComponent<TComponent>(grid);
+        var gridComponent = mapper.MapComponent<TComponent>(grid, configureContext);
         if (gridComponent is null)
         {
             return [];
@@ -95,9 +126,10 @@ public static class UmbracoMapperComponentsExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockGridModel? grid)
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapComponents<IComponent>(grid);
+        return mapper.MapComponents<IComponent>(grid, configureContext);
     }
 }

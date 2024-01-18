@@ -10,14 +10,17 @@ using Rhythm.Drop.Models.Links;
 /// </summary>
 public static class UmbracoMapperLinkExtensions
 {
+    private static readonly Action<MapperContext> _defaultContextFunc = (c) => { };
+
     /// <summary>
     /// Maps a single block reference to a <typeparamref name="TLink"/>.
     /// </summary>
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
-    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block) where TLink : class, ILink
+    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         if (block is null)
         {
@@ -32,8 +35,9 @@ public static class UmbracoMapperLinkExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <see cref="ILink"/> if successful.</returns>
-    public static ILink? MapLink(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block)
+    public static ILink? MapLink(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLink<ILink>(block);
     }
@@ -44,15 +48,16 @@ public static class UmbracoMapperLinkExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
-    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IPublishedElement? element) where TLink : class, ILink
+    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         if (element is null)
         {
             return default;
         }
 
-        return mapper.Map<TLink?>(element);
+        return mapper.Map<TLink?>(element, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>
@@ -60,10 +65,11 @@ public static class UmbracoMapperLinkExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <see cref="ILink"/> if successful.</returns>
-    public static ILink? MapLink(this IUmbracoMapper mapper, IPublishedElement? element)
+    public static ILink? MapLink(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapLink<ILink>(element);
+        return mapper.MapLink<ILink>(element, configureContext);
     }
 
     /// <summary>
@@ -72,10 +78,11 @@ public static class UmbracoMapperLinkExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
-    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, BlockListModel list) where TLink : class, ILink
+    public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
-        return mapper.MapLink<TLink>(list.FirstOrDefault());
+        return mapper.MapLink<TLink>(list.FirstOrDefault(), configureContext);
     }
 
     /// <summary>
@@ -83,9 +90,10 @@ public static class UmbracoMapperLinkExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>A <see cref="ILink"/> if successful.</returns>
-    public static ILink? MapLink(this IUmbracoMapper mapper, BlockListModel list)
+    public static ILink? MapLink(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapLink<ILink>(list);
+        return mapper.MapLink<ILink>(list, configureContext);
     }
 }

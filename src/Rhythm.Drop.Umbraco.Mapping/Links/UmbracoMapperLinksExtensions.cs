@@ -9,19 +9,22 @@ using Rhythm.Drop.Models.Links;
 /// </summary>
 public static class UmbracoMapperLinksExtensions
 {
+    private static readonly Action<MapperContext> _defaultContextFunc = (c) => { };
+
     /// <summary>
     /// Maps a <see cref="BlockListModel"/> to a collection of <typeparamref name="TLink"/>.
     /// </summary>
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <typeparamref name="TLink"/>.</returns>
-    public static TLink[] MapLinks<TLink>(this IUmbracoMapper mapper, BlockListModel list) where TLink : class, ILink
+    public static TLink[] MapLinks<TLink>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         var links = new List<TLink>();
         foreach (var block in list)
         {
-            var link = mapper.MapLink<TLink>(block.Content);
+            var link = mapper.MapLink<TLink>(block.Content, configureContext);
             if (link is null)
             {
                 continue;
@@ -38,9 +41,10 @@ public static class UmbracoMapperLinksExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
+    /// <param name="configureContext">The optional configure mapper context action.</param>
     /// <returns>An array of <see cref="ILink"/>.</returns>
-    public static ILink[] MapLinks(this IUmbracoMapper mapper, BlockListModel list)
+    public static ILink[] MapLinks(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
     {
-        return mapper.MapLinks<ILink>(list);
+        return mapper.MapLinks<ILink>(list, configureContext);
     }
 }
