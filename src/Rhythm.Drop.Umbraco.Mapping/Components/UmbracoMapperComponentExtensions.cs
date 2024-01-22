@@ -19,7 +19,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TComponent? MapComponent<TComponent>(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
         if (block is null)
@@ -36,7 +39,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="IComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="IComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static IComponent? MapComponent(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponent<IComponent>(block, configureContext);
@@ -49,7 +55,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TComponent? MapComponent<TComponent>(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
         if (element is null)
@@ -66,7 +75,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="IComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="IComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static IComponent? MapComponent(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponent<IComponent>(element, configureContext);
@@ -79,9 +91,17 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TComponent"/> if successful.</returns>
-    public static TComponent? MapComponent<TComponent>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>A <typeparamref name="TComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent? MapComponent<TComponent>(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
+        if (list is null)
+        {
+            return default;
+        }
+
         return mapper.MapComponent<TComponent>(list.FirstOrDefault(), configureContext);
     }
 
@@ -91,8 +111,11 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="IComponent"/> if successful.</returns>
-    public static IComponent? MapComponent(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
+    /// <returns>
+    /// <para>A <see cref="IComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent? MapComponent(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponent<IComponent>(list, configureContext);
     }
@@ -103,7 +126,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="IComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="IComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static IComponent? MapComponent(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponent<IComponent>(grid, configureContext);
@@ -115,7 +141,10 @@ public static class UmbracoMapperComponentExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TComponent"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TComponent"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TComponent? MapComponent<TComponent>(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
         if (grid is null)

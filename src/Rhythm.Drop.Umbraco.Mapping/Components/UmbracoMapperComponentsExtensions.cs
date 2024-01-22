@@ -19,9 +19,17 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="content">The content to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent content, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent? content, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
+        if (content is null)
+        {
+            return [];
+        }
+
         var component = mapper.Map<TComponent[]>(content, configureContext ?? _defaultContextFunc);
 
         return component ?? [];
@@ -33,8 +41,11 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="content">The content to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this IUmbracoMapper mapper, IPublishedContent content, Action<MapperContext>? configureContext = default)
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, IPublishedContent? content, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponents<IComponent>(content, configureContext);
     }
@@ -44,8 +55,11 @@ public static class UmbracoMapperComponentsExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="content">The content to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent content) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, IPublishedContent? content) where TComponent : class, IComponent
     {
         void configureContext(MapperContext context)
         {
@@ -60,8 +74,11 @@ public static class UmbracoMapperComponentsExtensions
     /// </summary>
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="content">The content to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this IUmbracoMapper mapper, IPublishedContent content)
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, IPublishedContent? content)
     {
         return mapper.MapComponents<IComponent>(content);
     }
@@ -73,9 +90,17 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>An array of <typeparamref name="TComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
+        if (list is null)
+        {
+            return [];
+        }
+
         var components = new List<TComponent>();
         foreach (var block in list)
         {
@@ -97,8 +122,11 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponents<IComponent>(list, configureContext);
     }
@@ -109,7 +137,10 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
+    /// <returns>
+    /// <para>An array of <typeparamref name="TComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TComponent[] MapComponents<TComponent>(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default) where TComponent : class, IComponent
     {
         var gridComponent = mapper.MapComponent<TComponent>(grid, configureContext);
@@ -127,7 +158,10 @@ public static class UmbracoMapperComponentsExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="grid">The grid to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static IComponent[] MapComponents(this IUmbracoMapper mapper, BlockGridModel? grid, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapComponents<IComponent>(grid, configureContext);

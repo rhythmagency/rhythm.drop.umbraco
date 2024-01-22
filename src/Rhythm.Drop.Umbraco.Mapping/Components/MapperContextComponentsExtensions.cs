@@ -16,9 +16,17 @@ public static class MapperContextComponentsExtensions
     /// <typeparam name="TComponent">The type of the component.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="content">The content to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this MapperContext mapperContext, IPublishedContent content) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent[] MapComponents<TComponent>(this MapperContext mapperContext, IPublishedContent? content) where TComponent : class, IComponent
     {
+        if (content is null)
+        {
+            return [];
+        }
+
         var component = mapperContext.Map<TComponent[]>(content);
 
         return component ?? [];
@@ -29,8 +37,11 @@ public static class MapperContextComponentsExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="content">The content to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this MapperContext mapperContext, IPublishedContent content)
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="content"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent[] MapComponents(this MapperContext mapperContext, IPublishedContent? content)
     {
         return mapperContext.MapComponents<IComponent>(content);
     }
@@ -41,9 +52,17 @@ public static class MapperContextComponentsExtensions
     /// <typeparam name="TComponent">The type of the component.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
-    public static TComponent[] MapComponents<TComponent>(this MapperContext mapperContext, BlockListModel list) where TComponent : class, IComponent
+    /// <returns>
+    /// <para>An array of <typeparamref name="TComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TComponent[] MapComponents<TComponent>(this MapperContext mapperContext, BlockListModel? list) where TComponent : class, IComponent
     {
+        if (list is null)
+        {
+            return [];
+        }
+
         var components = new List<TComponent>();
         foreach (var block in list)
         {
@@ -64,8 +83,11 @@ public static class MapperContextComponentsExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
-    public static IComponent[] MapComponents(this MapperContext mapperContext, BlockListModel list)
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static IComponent[] MapComponents(this MapperContext mapperContext, BlockListModel? list)
     {
         return mapperContext.MapComponents<IComponent>(list);
     }
@@ -74,9 +96,11 @@ public static class MapperContextComponentsExtensions
     /// Maps a <see cref="BlockGridModel"/> to a collection of <see cref="IComponent"/>.
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
-
     /// <param name="grid">The grid to map.</param>
-    /// <returns>An array of <typeparamref name="TComponent"/>.</returns>
+    /// <returns>
+    /// <para>An array of <typeparamref name="TComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TComponent[] MapComponents<TComponent>(this MapperContext mapperContext, BlockGridModel? grid) where TComponent : class, IComponent
     {
         var gridComponent = mapperContext.MapComponent<TComponent>(grid);
@@ -93,7 +117,10 @@ public static class MapperContextComponentsExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="grid">The grid to map.</param>
-    /// <returns>An array of <see cref="IComponent"/>.</returns>
+    /// <returns>
+    /// <para>An array of <see cref="IComponent"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="grid"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static IComponent[] MapComponents(this MapperContext mapperContext, BlockGridModel? grid)
     {
         return mapperContext.MapComponents<IComponent>(grid);
