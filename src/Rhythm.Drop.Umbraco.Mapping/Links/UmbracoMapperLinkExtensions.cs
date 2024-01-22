@@ -19,7 +19,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         if (block is null)
@@ -36,7 +39,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="block">The block to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLink<ILink>(block, configureContext);
@@ -49,7 +55,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         if (element is null)
@@ -66,7 +75,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="element">The element to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this IUmbracoMapper mapper, IPublishedElement? element, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLink<ILink>(element, configureContext);
@@ -79,7 +91,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
         if (list is null)
@@ -96,7 +111,10 @@ public static class UmbracoMapperLinkExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLink<ILink>(list, configureContext);

@@ -18,9 +18,17 @@ public static class UmbracoMapperLinksExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <typeparamref name="TLink"/>.</returns>
-    public static TLink[] MapLinks<TLink>(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
+    /// <returns>
+    /// <para>An array of <typeparamref name="TLink"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TLink[] MapLinks<TLink>(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default) where TLink : class, ILink
     {
+        if (list is null)
+        {
+            return [];
+        }
+
         var links = new List<TLink>();
         foreach (var block in list)
         {
@@ -42,8 +50,11 @@ public static class UmbracoMapperLinksExtensions
     /// <param name="mapper">The current umbraco mapper.</param>
     /// <param name="list">The list to map.</param>
     /// <param name="configureContext">The optional configure mapper context action.</param>
-    /// <returns>An array of <see cref="ILink"/>.</returns>
-    public static ILink[] MapLinks(this IUmbracoMapper mapper, BlockListModel list, Action<MapperContext>? configureContext = default)
+    /// <returns>
+    /// <para>An array of <see cref="ILink"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static ILink[] MapLinks(this IUmbracoMapper mapper, BlockListModel? list, Action<MapperContext>? configureContext = default)
     {
         return mapper.MapLinks<ILink>(list, configureContext);
     }

@@ -15,9 +15,17 @@ public static class MapperContextLinksExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>An array of <typeparamref name="TLink"/>.</returns>
-    public static TLink[] MapLinks<TLink>(this MapperContext mapperContext, BlockListModel list) where TLink : class, ILink
+    /// <returns>
+    /// <para>An array of <typeparamref name="TLink"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static TLink[] MapLinks<TLink>(this MapperContext mapperContext, BlockListModel? list) where TLink : class, ILink
     {
+        if (list is null)
+        {
+            return [];
+        }
+
         var links = new List<TLink>();
         foreach (var block in list)
         {
@@ -38,8 +46,11 @@ public static class MapperContextLinksExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>An array of <see cref="ILink"/>.</returns>
-    public static ILink[] MapLinks(this MapperContext mapperContext, BlockListModel list)
+    /// <returns>
+    /// <para>An array of <see cref="ILink"/>.</para>
+    /// <para>This method will return an empty collection if <paramref name="list"/> is <see langword="null"/>.</para>
+    /// </returns>
+    public static ILink[] MapLinks(this MapperContext mapperContext, BlockListModel? list)
     {
         return mapperContext.MapLinks<ILink>(list);
     }

@@ -16,7 +16,10 @@ public static class MapperContextLinkExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="block">The block to map.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this MapperContext mapperContext, IBlockReference<IPublishedElement, IPublishedElement>? block) where TLink : class, ILink
     {
         if (block is null)
@@ -32,7 +35,10 @@ public static class MapperContextLinkExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="block">The block to map.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="block"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this MapperContext mapperContext, IBlockReference<IPublishedElement, IPublishedElement>? block)
     {
         return mapperContext.MapLink<ILink>(block);
@@ -44,7 +50,10 @@ public static class MapperContextLinkExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="element">The element to map.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this MapperContext mapperContext, IPublishedElement? element) where TLink : class, ILink
     {
         if (element is null)
@@ -60,7 +69,10 @@ public static class MapperContextLinkExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="element">The element to map.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="element"/> is <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this MapperContext mapperContext, IPublishedElement? element)
     {
         return mapperContext.MapLink<ILink>(element);
@@ -72,7 +84,10 @@ public static class MapperContextLinkExtensions
     /// <typeparam name="TLink">The type of the link.</typeparam>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>A <typeparamref name="TLink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <typeparamref name="TLink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
     public static TLink? MapLink<TLink>(this MapperContext mapperContext, BlockListModel? list) where TLink : class, ILink
     {
         if (list is null)
@@ -88,7 +103,10 @@ public static class MapperContextLinkExtensions
     /// </summary>
     /// <param name="mapperContext">The current mapper context.</param>
     /// <param name="list">The list to map.</param>
-    /// <returns>A <see cref="ILink"/> if successful.</returns>
+    /// <returns>
+    /// <para>A <see cref="ILink"/> if successful.</para>
+    /// <para>This method will return <see langword="default" /> if <paramref name="list"/> or its first item are <see langword="null"/>.</para>
+    /// </returns>
     public static ILink? MapLink(this MapperContext mapperContext, BlockListModel? list)
     {
         return mapperContext.MapLink<ILink>(list);
