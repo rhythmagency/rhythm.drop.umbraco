@@ -32,7 +32,7 @@
 
 	<!-- Package includes -->
 	<ItemGroup>
-		<PackageReference Include="Rhythm.Drop" Version="[3,4)" />
+		<PackageReference Include="Rhythm.Drop" Version="[4,5)" />
 		<PackageReference Include="Umbraco.Cms.Core" Version="13.0.3" />
 	</ItemGroup>
 
