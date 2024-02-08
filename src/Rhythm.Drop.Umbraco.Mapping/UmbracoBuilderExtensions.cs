@@ -7,6 +7,7 @@ using Rhythm.Drop.Umbraco.Mapping.Components;
 using Rhythm.Drop.Umbraco.Mapping.Elements;
 using Rhythm.Drop.Umbraco.Mapping.Images;
 using Rhythm.Drop.Umbraco.Mapping.Links;
+using Rhythm.Drop.Umbraco.Mapping.Modals;
 
 /// <summary>
 /// A collection of extension methods that augment <see cref="IUmbracoBuilder"/> regarding mapping.
@@ -24,7 +25,8 @@ public static class UmbracoBuilderExtensions
             .AddAllRhythmDropComponentMapDefinitions()
             .AddRhythmDropElementMapDefinitions()
             .AddRhythmDropImageMapDefinitions()
-            .AddRhythmDropLinkMapDefinitions();
+            .AddRhythmDropLinkMapDefinitions()
+            .AddRhythmDropModalMapDefinitions();
     }
 
     internal static IUmbracoBuilder AddMapDefinitionsOfType<TMapDefinition>(this IUmbracoBuilder builder) where TMapDefinition : class, IMapDefinition, IDiscoverable
