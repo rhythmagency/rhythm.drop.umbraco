@@ -4,6 +4,8 @@ Rhythm.Drop functionality for Umbraco CMS.
 
 Rhythm.Drop.Umbraco is meant to work along side Rhythm.Drop so be sure to read the [Rhythm.Drop readme](https://github.com/rhythmagency/rhythm.drop) and [wiki](https://github.com/rhythmagency/rhythm.drop/wiki) for more information on how the core package works.
 
+Rhythm.Drop.Umbraco also has its own [wiki](/rhythmagency/rhythm.drop/wiki) which is tailored towards Umbraco functionality. 
+
 ## Startup
 
 To get started with Rhythm Drop you will be the following;
