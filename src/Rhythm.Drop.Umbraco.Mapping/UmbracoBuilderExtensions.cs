@@ -4,6 +4,7 @@ using global::Umbraco.Cms.Core.Composing;
 using global::Umbraco.Cms.Core.DependencyInjection;
 using global::Umbraco.Cms.Core.Mapping;
 using Rhythm.Drop.Umbraco.Mapping.Components;
+using Rhythm.Drop.Umbraco.Mapping.Elements;
 using Rhythm.Drop.Umbraco.Mapping.Links;
 
 /// <summary>
@@ -20,6 +21,7 @@ public static class UmbracoBuilderExtensions
     {
         return builder
             .AddAllRhythmDropComponentMapDefinitions()
+            .AddRhythmDropElementMapDefinitions()
             .AddRhythmDropLinkMapDefinitions();
     }
 
