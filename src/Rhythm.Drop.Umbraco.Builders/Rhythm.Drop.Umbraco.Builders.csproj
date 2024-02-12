@@ -20,7 +20,7 @@
 
 	<!-- Package includes -->
 	<ItemGroup>
-		<PackageReference Include="Rhythm.Drop.Builders" Version="[5,6)" />
+		<PackageReference Include="Rhythm.Drop.Builders" Version="[6,7)" />
 		<PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.3" />
 	</ItemGroup>
 
