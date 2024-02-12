@@ -4,7 +4,7 @@ using global::Umbraco.Cms.Core.Composing;
 using global::Umbraco.Cms.Core.DependencyInjection;
 using global::Umbraco.Cms.Core.Mapping;
 using Rhythm.Drop.Umbraco.Mapping.Components;
-using Rhythm.Drop.Umbraco.Mapping.Elements;
+using Rhythm.Drop.Umbraco.Mapping.Subcomponents;
 using Rhythm.Drop.Umbraco.Mapping.Images;
 using Rhythm.Drop.Umbraco.Mapping.Links;
 using Rhythm.Drop.Umbraco.Mapping.Modals;
@@ -23,10 +23,10 @@ public static class UmbracoBuilderExtensions
     {
         return builder
             .AddAllRhythmDropComponentMapDefinitions()
-            .AddRhythmDropElementMapDefinitions()
             .AddRhythmDropImageMapDefinitions()
             .AddRhythmDropLinkMapDefinitions()
-            .AddRhythmDropModalMapDefinitions();
+            .AddRhythmDropModalMapDefinitions()
+            .AddRhythmDropSubcomponentMapDefinitions();
     }
 
     internal static IUmbracoBuilder AddMapDefinitionsOfType<TMapDefinition>(this IUmbracoBuilder builder) where TMapDefinition : class, IMapDefinition, IDiscoverable
