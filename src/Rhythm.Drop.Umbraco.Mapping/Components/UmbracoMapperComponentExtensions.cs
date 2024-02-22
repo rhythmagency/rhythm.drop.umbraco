@@ -30,7 +30,7 @@ public static class UmbracoMapperComponentExtensions
             return default;
         }
 
-        return mapper.MapComponent<TComponent>(block.Content, configureContext);
+        return mapper.MapComponent<TComponent>(block, configureContext);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public static class UmbracoMapperComponentExtensions
             return default;
         }
 
-        return mapper.Map<TComponent?>(element, configureContext ?? _defaultContextFunc);
+        return mapper.Map<TComponent>(element, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>
@@ -152,6 +152,6 @@ public static class UmbracoMapperComponentExtensions
             return default;
         }
 
-        return mapper.Map<TComponent?>(grid, configureContext ?? _defaultContextFunc);
+        return mapper.Map<TComponent>(grid, configureContext ?? _defaultContextFunc);
     }
 }

@@ -104,7 +104,7 @@ public static class UmbracoMapperComponentsExtensions
         var components = new List<TComponent>();
         foreach (var block in list)
         {
-            var component = mapper.MapComponent<TComponent>(block.Content, configureContext);
+            var component = mapper.MapComponent<TComponent>(block, configureContext);
             if (component is null)
             {
                 continue;

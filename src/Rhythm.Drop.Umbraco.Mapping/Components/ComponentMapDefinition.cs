@@ -17,7 +17,7 @@ public abstract class ComponentMapDefinition<TSource> : ComponentMapDefinition<T
 }
 
 /// <summary>
-/// An abstract map definition for mapping a <typeparamref name="TSource"/> to a <typeparamref name="TComponent"/>.
+/// An abstract map definition for mapping a <typeparamref name="TSource"/> to a <typeparamref name="TComponent"/> and <see cref="IComponent"/>.
 /// </summary>
 /// <typeparam name="TSource">The source type.</typeparam>
 /// <typeparam name="TComponent">The component type.</typeparam>
