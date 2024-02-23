@@ -59,7 +59,13 @@ public abstract class BlockReferenceSubcomponentMapDefinition<TBlockContent, TSu
         return Map(source.Content, context);
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Maps a <typeparamref name="TBlockContent"/> to a <typeparamref name="TSubcomponent"/>.
+    /// </summary>
+    /// <param name="source">The source.</param>
+    /// <param name="context">The context.</param>
+    /// <returns>A <typeparamref name="TSubcomponent"/> if successful.</returns>
+    /// <remarks>This the intermediary method that is used by default implementations of <see cref="Map(BlockGridItem{TBlockContent}, MapperContext)"/> or <see cref="Map(BlockListItem{TBlockContent}, MapperContext)"/></remarks>
     protected virtual TSubcomponent? Map(TBlockContent source, MapperContext context)
     {
         return default;
