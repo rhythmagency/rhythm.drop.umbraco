@@ -17,7 +17,7 @@ public abstract class SubcomponentMapDefinition<TSource> : SubcomponentMapDefini
 }
 
 /// <summary>
-/// An abstract map definition for mapping a <typeparamref name="TSource"/> to a <typeparamref name="TSubcomponent"/>.
+/// An abstract map definition for mapping a <typeparamref name="TSource"/> to a <typeparamref name="TSubcomponent"/> and <see cref="ISubcomponent"/>.
 /// </summary>
 /// <typeparam name="TSource">The source type.</typeparam>
 /// <typeparam name="TSubcomponent">The subcomponent type.</typeparam>

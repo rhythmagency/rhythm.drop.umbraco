@@ -30,7 +30,7 @@ public static class UmbracoMapperSubcomponentExtensions
             return default;
         }
 
-        return mapper.MapSubcomponent<TSubcomponent>(block.Content, configureContext);
+        return mapper.Map<TSubcomponent>(block, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public static class UmbracoMapperSubcomponentExtensions
             return default;
         }
 
-        return mapper.Map<TSubcomponent?>(element, configureContext ?? _defaultContextFunc);
+        return mapper.Map<TSubcomponent>(element, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>

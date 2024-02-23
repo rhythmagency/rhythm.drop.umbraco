@@ -32,7 +32,7 @@ public static class UmbracoMapperSubcomponentsExtensions
         var subcomponents = new List<TSubcomponent>();
         foreach (var block in list)
         {
-            var subcomponent = mapper.MapSubcomponent<TSubcomponent>(block.Content, configureContext);
+            var subcomponent = mapper.MapSubcomponent<TSubcomponent>(block, configureContext);
             if (subcomponent is null)
             {
                 continue;

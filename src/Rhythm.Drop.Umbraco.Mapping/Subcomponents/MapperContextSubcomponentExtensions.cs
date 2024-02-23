@@ -27,7 +27,7 @@ public static class MapperContextSubcomponentExtensions
             return default;
         }
 
-        return mapperContext.MapSubcomponent<TSubcomponent>(block.Content);
+        return mapperContext.Map<TSubcomponent>(block);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public static class MapperContextSubcomponentExtensions
             return default;
         }
 
-        return mapperContext.Map<TSubcomponent?>(element);
+        return mapperContext.Map<TSubcomponent>(element);
     }
 
     /// <summary>

@@ -29,7 +29,7 @@ public static class MapperContextSubcomponentsExtensions
         var elements = new List<TSubcomponent>();
         foreach (var block in list)
         {
-            var element = mapperContext.MapSubcomponent<TSubcomponent>(block.Content);
+            var element = mapperContext.MapSubcomponent<TSubcomponent>(block);
             if (element is null)
             {
                 continue;
