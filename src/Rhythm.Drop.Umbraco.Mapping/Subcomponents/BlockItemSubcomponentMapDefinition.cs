@@ -9,7 +9,7 @@ using Rhythm.Drop.Models.Subcomponents;
 /// A base map definition for mapping a <see cref="BlockGridItem{T}"/> or <see cref="BlockListItem{T}"/> with a content type of <typeparamref name="TBlockContent"/> to a <see cref="ISubcomponent"/>.
 /// </summary>
 /// <typeparam name="TBlockContent">The type of the block content.</typeparam>
-public abstract class BlockReferenceSubcomponentMapDefinition<TBlockContent> : BlockReferenceSubcomponentMapDefinition<TBlockContent, ISubcomponent> where TBlockContent : IPublishedElement
+public abstract class BlockItemSubcomponentMapDefinition<TBlockContent> : BlockItemSubcomponentMapDefinition<TBlockContent, ISubcomponent> where TBlockContent : IPublishedElement
 {
     /// <inheritdoc/>
     public override void DefineMaps(IUmbracoMapper mapper)
@@ -25,7 +25,7 @@ public abstract class BlockReferenceSubcomponentMapDefinition<TBlockContent> : B
 /// </summary>
 /// <typeparam name="TBlockContent">The type of the block content.</typeparam>
 /// <typeparam name="TSubcomponent">The type of the subcomponent.</typeparam>
-public abstract class BlockReferenceSubcomponentMapDefinition<TBlockContent, TSubcomponent> : ISubcomponentMapDefinition where TBlockContent : IPublishedElement where TSubcomponent : class, ISubcomponent
+public abstract class BlockItemSubcomponentMapDefinition<TBlockContent, TSubcomponent> : ISubcomponentMapDefinition where TBlockContent : IPublishedElement where TSubcomponent : class, ISubcomponent
 {
     /// <inheritdoc/>
     public virtual void DefineMaps(IUmbracoMapper mapper)
