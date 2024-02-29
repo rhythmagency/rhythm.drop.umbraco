@@ -30,7 +30,7 @@ public static class UmbracoMapperModalExtensions
             return default;
         }
 
-        return mapper.MapModal<TModal>(block.Content, configureContext);
+        return mapper.Map<TModal>(block, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>

@@ -27,7 +27,7 @@ public static class MapperContextModalExtensions
             return default;
         }
 
-        return mapperContext.MapModal<TModal>(block.Content);
+        return mapperContext.Map<TModal>(block);
     }
 
     /// <summary>

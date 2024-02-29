@@ -32,7 +32,7 @@ public static class UmbracoMapperModalsExtensions
         var modals = new List<TModal>();
         foreach (var block in list)
         {
-            var modal = mapper.MapModal<TModal>(block.Content, configureContext);
+            var modal = mapper.MapModal<TModal>(block, configureContext);
             if (modal is null)
             {
                 continue;

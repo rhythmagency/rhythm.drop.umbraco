@@ -29,7 +29,7 @@ public static class MapperContextModalsExtensions
         var modals = new List<TModal>();
         foreach (var block in list)
         {
-            var modal = mapperContext.MapModal<TModal>(block.Content);
+            var modal = mapperContext.MapModal<TModal>(block);
             if (modal is null)
             {
                 continue;
