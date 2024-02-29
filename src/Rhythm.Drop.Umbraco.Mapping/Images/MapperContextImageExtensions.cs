@@ -27,7 +27,7 @@ public static class MapperContextImageExtensions
             return default;
         }
 
-        return mapperContext.MapImage<TImage>(block.Content);
+        return mapperContext.Map<TImage>(block);
     }
 
     /// <summary>

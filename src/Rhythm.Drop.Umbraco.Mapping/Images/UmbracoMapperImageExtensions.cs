@@ -30,7 +30,7 @@ public static class UmbracoMapperImageExtensions
             return default;
         }
 
-        return mapper.MapImage<TImage>(block.Content, configureContext);
+        return mapper.Map<TImage>(block.Content, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>

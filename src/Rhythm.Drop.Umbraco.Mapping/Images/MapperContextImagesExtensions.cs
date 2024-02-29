@@ -29,7 +29,7 @@ public static class MapperContextImagesExtensions
         var images = new List<TImage>();
         foreach (var block in list)
         {
-            var image = mapperContext.MapImage<TImage>(block.Content);
+            var image = mapperContext.MapImage<TImage>(block);
             if (image is null)
             {
                 continue;

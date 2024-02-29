@@ -32,7 +32,7 @@ public static class UmbracoMapperImagesExtensions
         var images = new List<TImage>();
         foreach (var block in list)
         {
-            var image = mapper.MapImage<TImage>(block.Content, configureContext);
+            var image = mapper.MapImage<TImage>(block, configureContext);
             if (image is null)
             {
                 continue;
