@@ -32,7 +32,7 @@ public static class UmbracoMapperLinksExtensions
         var links = new List<TLink>();
         foreach (var block in list)
         {
-            var link = mapper.MapLink<TLink>(block.Content, configureContext);
+            var link = mapper.MapLink<TLink>(block, configureContext);
             if (link is null)
             {
                 continue;

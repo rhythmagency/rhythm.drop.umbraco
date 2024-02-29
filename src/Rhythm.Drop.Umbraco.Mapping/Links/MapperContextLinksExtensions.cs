@@ -29,7 +29,7 @@ public static class MapperContextLinksExtensions
         var links = new List<TLink>();
         foreach (var block in list)
         {
-            var link = mapperContext.MapLink<TLink>(block.Content);
+            var link = mapperContext.MapLink<TLink>(block);
             if (link is null)
             {
                 continue;

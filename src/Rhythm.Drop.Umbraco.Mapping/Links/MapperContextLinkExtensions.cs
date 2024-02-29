@@ -27,7 +27,7 @@ public static class MapperContextLinkExtensions
             return default;
         }
 
-        return mapperContext.MapLink<TLink>(block.Content);
+        return mapperContext.Map<TLink>(block);
     }
 
     /// <summary>

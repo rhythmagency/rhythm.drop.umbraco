@@ -30,7 +30,7 @@ public static class UmbracoMapperLinkExtensions
             return default;
         }
 
-        return mapper.MapLink<TLink>(block.Content, configureContext);
+        return mapper.Map<TLink>(block.Content, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>
