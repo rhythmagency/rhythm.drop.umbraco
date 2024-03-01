@@ -34,7 +34,7 @@ public abstract class BlockItemImageMapDefinition<TBlockContent, TImage> : IImag
         mapper.Define<BlockGridItem<TBlockContent>, IImage?>(Map);
 
         mapper.Define<BlockListItem<TBlockContent>, TImage?>(Map);
-        mapper.Define<BlockListItem<TBlockContent>, TImage?>(Map);
+        mapper.Define<BlockListItem<TBlockContent>, IImage?>(Map);
     }
 
     /// <summary>

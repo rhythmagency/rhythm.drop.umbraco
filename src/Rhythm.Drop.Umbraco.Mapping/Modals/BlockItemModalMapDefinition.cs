@@ -34,7 +34,7 @@ public abstract class BlockItemModalMapDefinition<TBlockContent, TModal> : IModa
         mapper.Define<BlockGridItem<TBlockContent>, IModal?>(Map);
 
         mapper.Define<BlockListItem<TBlockContent>, TModal?>(Map);
-        mapper.Define<BlockListItem<TBlockContent>, TModal?>(Map);
+        mapper.Define<BlockListItem<TBlockContent>, IModal?>(Map);
     }
 
     /// <summary>

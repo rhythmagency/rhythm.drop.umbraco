@@ -34,7 +34,7 @@ public abstract class BlockItemComponentMapDefinition<TBlockContent, TComponent>
         mapper.Define<BlockGridItem<TBlockContent>, IComponent?>(Map);
 
         mapper.Define<BlockListItem<TBlockContent>, TComponent?>(Map);
-        mapper.Define<BlockListItem<TBlockContent>, TComponent?>(Map);
+        mapper.Define<BlockListItem<TBlockContent>, IComponent?>(Map);
     }
 
     /// <summary>

@@ -34,7 +34,7 @@ public abstract class BlockItemLinkMapDefinition<TBlockContent, TLink> : ILinkMa
         mapper.Define<BlockGridItem<TBlockContent>, ILink?>(Map);
 
         mapper.Define<BlockListItem<TBlockContent>, TLink?>(Map);
-        mapper.Define<BlockListItem<TBlockContent>, TLink?>(Map);
+        mapper.Define<BlockListItem<TBlockContent>, ILink?>(Map);
     }
 
     /// <summary>
