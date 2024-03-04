@@ -30,7 +30,7 @@ public static class UmbracoMapperComponentExtensions
             return default;
         }
 
-        return mapper.MapComponent<TComponent>(block, configureContext);
+        return mapper.Map<TComponent>(block, configureContext ?? _defaultContextFunc);
     }
 
     /// <summary>
